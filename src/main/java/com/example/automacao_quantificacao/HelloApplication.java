@@ -15,13 +15,34 @@ import java.io.IOException;
 //
 
 public class HelloApplication extends Application {
+
+    private static Stage cena_stage;
+    private static Scene cena_tela_inicial;
+    private static Scene cena_quantificacao_mh;
+    private static Scene cena_quantificacao_mh_e_backbone;
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("quantificacao_mh_e_backbone.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+        cena_stage=stage;
+
         stage.setTitle("Tela Inicial");
-        stage.setScene(scene);
+
+        FXMLLoader tela_inicial_loader = new FXMLLoader(HelloApplication.class.getResource("tela_inicial.fxml"));
+        cena_tela_inicial = new Scene(tela_inicial_loader.load(), 400, 150);
+
+        FXMLLoader tela_quantificacao_mh_loader = new FXMLLoader(HelloApplication.class.getResource("quantificacao_mh.fxml"));
+        cena_quantificacao_mh = new Scene(tela_quantificacao_mh_loader.load(), 800, 500);
+
+        stage.setScene(cena_tela_inicial);
         stage.show();
+    }
+
+    public static void gerenciadorTelas(String arg) {
+        switch (arg){
+            case "quantificacao_mh":
+                cena_stage.setScene(cena_quantificacao_mh);
+                break;
+        }
     }
 
     public static void main(String[] args) {

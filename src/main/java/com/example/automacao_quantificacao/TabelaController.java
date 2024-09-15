@@ -38,5 +38,7 @@ public class TabelaController implements Initializable {
         valor_total.setCellValueFactory(new PropertyValueFactory("totalQuantidade_classe"));
 
         tabela.setItems(data);
+        tabela.edit(1, (TableColumn<ObjetoColuna, ?>) coluna_nome);
+
     }
 }

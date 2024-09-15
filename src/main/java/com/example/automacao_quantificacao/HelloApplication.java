@@ -32,7 +32,6 @@ public class HelloApplication extends Application {
         cena_tela_inicial = new Scene(tela_inicial_loader.load(), 400, 150);
 
 
-
         stage.setScene(cena_tela_inicial);
         stage.show();
     }

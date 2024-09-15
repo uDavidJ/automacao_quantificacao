@@ -23,7 +23,7 @@ public class QuantificacaoMhEBackboneController implements Initializable {
     private ToggleGroup grupo;
 
     @FXML
-    private TextField box_backbone_andar;
+    private TextField campo_backbone_andar;
 
     @FXML
     private ComboBox<?> box_categoria_fibra;
@@ -38,19 +38,13 @@ public class QuantificacaoMhEBackboneController implements Initializable {
     private TextField campo_pe_direito;
 
     @FXML
-    private RadioButton radio_bandeja_deslizante;
-
-    @FXML
-    private RadioButton radio_bandeja_fixa;
+    private CheckBox box_bandeja_deslizante;
 
     @FXML
     private CheckBox box_area_reservada;
 
     @FXML
     private CheckBox box_reguas_fechamento;
-
-    @FXML
-    private TextField campo_dados;
 
     @FXML
     private TextField campo_dt_malha;
@@ -70,8 +64,6 @@ public class QuantificacaoMhEBackboneController implements Initializable {
     @FXML
     private ComboBox<String> categoria;
 
-    @FXML
-    private CheckBox box_DVR;
 
     @FXML
     void botao_calculo_acao(ActionEvent event) throws IOException {
@@ -80,16 +72,13 @@ public class QuantificacaoMhEBackboneController implements Initializable {
         Calculos.campo_n_pavimentos=Integer.parseInt(campo_n_pavimentos.getText());
         Calculos.campo_dt_malha=Integer.parseInt(campo_dt_malha.getText());
         Calculos.categoria=categoria.getValue();
-        Calculos.campo_dados=campo_dados.getText();
         Calculos.campo_voz=campo_voz.getText();
         Calculos.campo_seg=campo_seg.getText();
 
-        if(radio_bandeja_deslizante.isSelected())
+        if(box_bandeja_deslizante.isSelected())
             Calculos.bandeja_deslizante=true;
-        else
-            Calculos.bandeja_fixa=true;
 
-        if(box_DVR.isSelected())
+        if(!(campo_seg.getText().isEmpty()) && (Integer.parseInt(campo_seg.getText()) != 0))
             Calculos.DVR=true;
         if(box_area_reservada.isSelected())
             Calculos.area_reservada=true;
@@ -102,19 +91,18 @@ public class QuantificacaoMhEBackboneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(ArmazenaEscolha.escolha=="backbone") {
+        if(ArmazenaEscolha.escolha.equals("backbone")) {
             campo_pts_pavimentos.setDisable(true);
             categoria.setDisable(true);
             campo_dt_malha.setDisable(true);
             campo_n_pavimentos.setDisable(true);
-            campo_dados.setDisable(true);
             campo_seg.setDisable(true);
             campo_voz.setDisable(true);
 
-        }else if(ArmazenaEscolha.escolha=="malha_horizontal") {
+        }else if(ArmazenaEscolha.escolha.equals("malha_horizontal")) {
             campo_pares_andar.setDisable(true);
             campo_pe_direito.setDisable(true);
-            box_backbone_andar.setDisable(true);
+            campo_backbone_andar.setDisable(true);
             box_padrao_fibra.setDisable(true);
             box_categoria_fibra.setDisable(true);
         }

@@ -22,7 +22,7 @@ public class TelaInicialController {
     void botao_prosseguir_acao(ActionEvent event) throws IOException {
         if(box_bo.isSelected() && !(box_mh.isSelected()))
             ArmazenaEscolha.escolha="backbone";
-        else if(box_mh.isSelected() && !(box_bo.isSelected()))
+        else
             ArmazenaEscolha.escolha="malha_horizontal";
 
         HelloApplication.renderizaTelas("quantificacao_mh_e_backbone");

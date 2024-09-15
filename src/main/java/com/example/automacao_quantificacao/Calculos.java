@@ -9,7 +9,7 @@ public class Calculos {
     public static String campo_voz;
     public static String campo_seg;
     public static String campo_dados;
-    public static boolean bandeja_fixa = false;
+    public static boolean bandeja_fixa = true;
     public static boolean bandeja_deslizante = false;
     public static boolean DVR = false;
     public static boolean area_reservada = false;

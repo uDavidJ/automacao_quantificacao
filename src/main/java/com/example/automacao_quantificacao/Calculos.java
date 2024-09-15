@@ -4,15 +4,25 @@ public class Calculos {
 
     public static int campo_pts_pavimentos;
     public static int campo_n_pavimentos;
+    public static int campo_dt_malha;
+    public static String categoria;
+    public static String campo_voz;
+    public static String campo_seg;
+    public static String campo_dados;
+    public static boolean bandeja_fixa = false;
+    public static boolean bandeja_deslizante = false;
+    public static boolean DVR = false;
+    public static boolean area_reservada = false;
+
 
 
     public static void calcula() {
 
         //Conversoes e variaveis
-        Integer tomadas = Integer.parseInt(campo_pts_pavimentos) * 2;
-        Integer pav = Integer.parseInt(campo_n_pavimentos);
+        Integer tomadas = campo_pts_pavimentos * 2;
+        Integer pav = campo_n_pavimentos;
         Integer patchCords = tomadas;
-        Integer malha_horizontal = Integer.parseInt(campo_dt_malha.getText()) * tomadas;
+        Integer malha_horizontal = campo_dt_malha * tomadas;
         Integer PP;
         Integer PG;
         //Etiqueta de identificação de tomadas e espelhos
@@ -33,7 +43,7 @@ public class Calculos {
         int[] rack_informacoes;
         Integer tamanho_bandeja;
         String modelo_rack;
-        String categoria_cabo = categoria.getValue();
+        String categoria_cabo = categoria;
 
 
 //        ObjetoColuna ob = new ObjetoColuna("Área de trabalho", "",0, 0);
@@ -54,8 +64,8 @@ public class Calculos {
         ArmazenaListaObjetosColuna.lista.add(ob);
 
         //Quantificacao dos patch cords
-        if(!(campo_voz.getText() == "" || campo_voz.getText() == "0"))
-            patchCords = patchCords - Integer.parseInt(campo_voz.getText());
+        if(!(campo_voz == "" || campo_voz == "0"))
+            patchCords = patchCords - Integer.parseInt(campo_voz);
 
         ob = new ObjetoColuna("Cordão de ligação (Patch cord), (Cor: Azul) (Tamanho: 3M) (" + categoria_cabo + ")", "Unid.",
                 patchCords,
@@ -77,24 +87,24 @@ public class Calculos {
         ArmazenaListaObjetosColuna.lista.add(ob);
 
         //Quantificacao dos patch cables
-        if(!(campo_voz.getText() == "" || campo_voz.getText() == "0")) {
+        if(!(campo_voz == "" || campo_voz == "0")) {
             ob = new ObjetoColuna("Patch Cable (Cor: Amarelo) (Tamanho: 2M) (" + categoria_cabo + ")", "Unid.",
-                    Integer.parseInt(campo_voz.getText()),
-                    Integer.parseInt(campo_voz.getText()) * pav);
+                    Integer.parseInt(campo_voz),
+                    Integer.parseInt(campo_voz) * pav);
             ArmazenaListaObjetosColuna.lista.add(ob);
         }
 
-        if(!(campo_seg.getText() == "" || campo_seg.getText() == "0")) {
+        if(!(campo_seg == "" || campo_seg == "0")) {
             ob = new ObjetoColuna("Patch Cable (Cor: Vermelho) (Tamanho: 2M) (" +categoria_cabo + ")", "Unid.",
-                    Integer.parseInt(campo_seg.getText()),
-                    Integer.parseInt(campo_seg.getText()) * pav);
+                    Integer.parseInt(campo_seg),
+                    Integer.parseInt(campo_seg) * pav);
             ArmazenaListaObjetosColuna.lista.add(ob);
         }
 
-        if(!(campo_dados.getText() == "" || campo_dados.getText() == "0")) {
+        if(!(campo_dados == "" || campo_dados == "0")) {
             ob = new ObjetoColuna("Patch Cable (Cor: Azul) (Tamanho: 2M) (" + categoria_cabo + ")", "Unid.",
-                    Integer.parseInt(campo_dados.getText()),
-                    Integer.parseInt(campo_dados.getText()) * pav);
+                    Integer.parseInt(campo_dados),
+                    Integer.parseInt(campo_dados) * pav);
             ArmazenaListaObjetosColuna.lista.add(ob);
         }
 
@@ -125,22 +135,20 @@ public class Calculos {
         ArmazenaListaObjetosColuna.lista.add(ob);
 
         //Montagem do rack
-        if(radio_bandeja_fixa.isSelected())
+        if(bandeja_fixa)
             tamanho_bandeja=4;
         else
             tamanho_bandeja=3;
 
         tamanho_rack = (double) ((PP*2) + OF + tamanho_bandeja);
 
-        System.out.println(tamanho_rack);
-
-        if (box_DVR.isSelected())
+        if (DVR)
             tamanho_rack+=2;
 
         tamanho_rack = tamanho_rack*1.5;
         rack_informacoes = calculaTamanhoRack(tamanho_rack);
 
-        if(box_area_reservada.isSelected())
+        if(area_reservada)
         {
             modelo_rack="Aberto";
             ob = new ObjetoColuna("Organizador lateral para rack " + String.valueOf(rack_informacoes[0]) + "U",
@@ -222,5 +230,31 @@ public class Calculos {
 
     }
 
+    public static int[] calculaTamanhoRack(double tamanho_rack) {
 
+        double[] tamanhos_rack = {4.0, 6.0, 8.0, 10.0, 12.0, 16.0, 20.0, 24.0, 28.0, 32.0, 36.0, 40.0, 44.0};
+        int quantidade_rack = 1;
+        int[] vetor = new int[2];
+
+        while(true) {
+            for(int i = 0; i<tamanhos_rack.length; i++) {
+                if(tamanho_rack==tamanhos_rack[i]) {
+                    tamanho_rack=tamanhos_rack[i];
+                    vetor[0] = (int) tamanho_rack;
+                    vetor[1] = quantidade_rack;
+                    return vetor;
+                }else if (i != 0 && i != (tamanhos_rack.length-1)) {
+                    if(tamanho_rack > tamanhos_rack[i-1] && tamanho_rack < tamanhos_rack[i+1]) {
+                        tamanho_rack = tamanhos_rack[i+1];
+                        vetor[0] = (int) tamanho_rack;
+                        vetor[1] = quantidade_rack;
+                        return vetor;
+                    }
+                }
+            }
+            tamanho_rack/=2;
+            quantidade_rack++;
+        }
+
+    }
 }

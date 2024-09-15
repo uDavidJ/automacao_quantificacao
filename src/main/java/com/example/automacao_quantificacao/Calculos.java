@@ -1,84 +1,16 @@
 package com.example.automacao_quantificacao;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+public class Calculos {
 
-public class QuantificacaoMhController implements Initializable {
+    public static int campo_pts_pavimentos;
+    public static int campo_n_pavimentos;
 
-    @FXML
-    private ToggleGroup grupo;
 
-    @FXML
-    private RadioButton radio_bandeja_deslizante;
-
-    @FXML
-    private RadioButton radio_bandeja_fixa;
-
-    @FXML
-    private Button botao_calculo;
-
-    @FXML
-    private CheckBox box_area_reservada;
-
-    @FXML
-    private CheckBox box_dados;
-
-    @FXML
-    private CheckBox box_reguas_fechamento;
-
-    @FXML
-    private CheckBox box_seg;
-
-    @FXML
-    private CheckBox box_voz;
-
-    @FXML
-    private TextField campo_dados;
-
-    @FXML
-    private TextField campo_dt_malha;
-
-    @FXML
-    private TextField campo_n_pavimentos;
-
-    @FXML
-    private TextField campo_pts_pavimentos;
-
-    @FXML
-    private TextField campo_seg;
-
-    @FXML
-    private TextField campo_voz;
-
-    @FXML
-    private ComboBox<String> categoria;
-
-    @FXML
-    private CheckBox box_DVR;
-
-    @FXML
-    private CheckBox box_exaustor;
-
-    @FXML
-    void botao_calculo_acao(ActionEvent event) throws IOException {
+    public static void calcula() {
 
         //Conversoes e variaveis
-        Integer tomadas = Integer.parseInt(campo_pts_pavimentos.getText()) * 2;
-        Integer pav = Integer.parseInt(campo_n_pavimentos.getText());
+        Integer tomadas = Integer.parseInt(campo_pts_pavimentos) * 2;
+        Integer pav = Integer.parseInt(campo_n_pavimentos);
         Integer patchCords = tomadas;
         Integer malha_horizontal = Integer.parseInt(campo_dt_malha.getText()) * tomadas;
         Integer PP;
@@ -228,7 +160,7 @@ public class QuantificacaoMhController implements Initializable {
         ob = new ObjetoColuna("Etiquetas para identificação de tomadas e espelhos",
                 "Unid.",
                 tomadas + (tomadas/2),
-        (tomadas + (tomadas/2)) * pav);
+                (tomadas + (tomadas/2)) * pav);
 
         ArmazenaListaObjetosColuna.lista.add(ob);
 
@@ -288,50 +220,7 @@ public class QuantificacaoMhController implements Initializable {
 
         ArmazenaListaObjetosColuna.lista.add(ob);
 
-
-
-
-        HelloApplication.renderizaTelas("tabela");
-
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<String> lista = new ArrayList<>();
-        lista.add("Cat 5e");
-        lista.add("Cat 6");
-        lista.add("Cat 6a");
-
-        ObservableList<String> obscategorias = FXCollections.observableArrayList(lista);
-        categoria.setItems(obscategorias);
-    }
-
-    public static int[] calculaTamanhoRack(double tamanho_rack) {
-
-        double[] tamanhos_rack = {4.0, 6.0, 8.0, 10.0, 12.0, 16.0, 20.0, 24.0, 28.0, 32.0, 36.0, 40.0, 44.0};
-        int quantidade_rack = 1;
-        int[] vetor = new int[2];
-
-        while(true) {
-            for(int i = 0; i<tamanhos_rack.length; i++) {
-                if(tamanho_rack==tamanhos_rack[i]) {
-                    tamanho_rack=tamanhos_rack[i];
-                    vetor[0] = (int) tamanho_rack;
-                    vetor[1] = quantidade_rack;
-                    return vetor;
-                }else if (i != 0 && i != (tamanhos_rack.length-1)) {
-                    if(tamanho_rack > tamanhos_rack[i-1] && tamanho_rack < tamanhos_rack[i+1]) {
-                        tamanho_rack = tamanhos_rack[i+1];
-                        vetor[0] = (int) tamanho_rack;
-                        vetor[1] = quantidade_rack;
-                        return vetor;
-                    }
-                }
-            }
-            tamanho_rack/=2;
-            quantidade_rack++;
-        }
-
-    }
 
 }

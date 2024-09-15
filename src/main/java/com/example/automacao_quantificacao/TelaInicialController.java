@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 
+import java.io.IOException;
+
 public class TelaInicialController {
 
     @FXML
@@ -17,9 +19,9 @@ public class TelaInicialController {
     private CheckBox box_mh;
 
     @FXML
-    void botao_prosseguir_acao(ActionEvent event) {
+    void botao_prosseguir_acao(ActionEvent event) throws IOException {
         if(box_mh.isSelected())
-            HelloApplication.gerenciadorTelas("quantificacao_mh");
+            HelloApplication.renderizaTelas("quantificacao_mh");
 
     }
 

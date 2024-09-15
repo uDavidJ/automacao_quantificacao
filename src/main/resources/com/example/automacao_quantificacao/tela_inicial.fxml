@@ -8,12 +8,12 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.automacao_quantificacao.TelaInicialController">
    <children>
-      <Text layoutX="95.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Automação Quantificação">
+      <Text layoutX="38.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Automação Quantificação">
          <font>
-            <Font size="18.0" />
+            <Font size="28.0" />
          </font>
       </Text>
-      <CheckBox fx:id="box_mh" layoutX="85.0" layoutY="77.0" mnemonicParsing="false" text="Malha Horizontal" />
+      <CheckBox fx:id="box_mh" layoutX="84.0" layoutY="77.0" mnemonicParsing="false" text="Malha Horizontal" />
       <CheckBox fx:id="box_bo" layoutX="210.0" layoutY="77.0" mnemonicParsing="false" text="Backbone Óptico" />
       <Button fx:id="botao_prosseguir" layoutX="314.0" layoutY="111.0" mnemonicParsing="false" onAction="#botao_prosseguir_acao" text="Prosseguir" />
    </children>

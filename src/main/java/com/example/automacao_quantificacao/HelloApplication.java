@@ -38,7 +38,7 @@ public class HelloApplication extends Application {
 
     public static void iniciaTelas(String arg) {
         switch (arg){
-            case "quantificacao_mh":
+            case "quantificacao_mh_e_backbone":
                 cena_stage.setScene(cena_quantificacao_mh);
                 break;
 
@@ -51,8 +51,8 @@ public class HelloApplication extends Application {
 
     public static void renderizaTelas(String arg) throws IOException{
         switch (arg) {
-            case "quantificacao_mh":
-                FXMLLoader tela_quantificacao_mh_loader = new FXMLLoader(HelloApplication.class.getResource("quantificacao_mh.fxml"));
+            case "quantificacao_mh_e_backbone":
+                FXMLLoader tela_quantificacao_mh_loader = new FXMLLoader(HelloApplication.class.getResource("quantificacao_mh_e_backbone.fxml"));
                 cena_quantificacao_mh = new Scene(tela_quantificacao_mh_loader.load(), 800, 500);
                 HelloApplication.iniciaTelas(arg);
                 break;

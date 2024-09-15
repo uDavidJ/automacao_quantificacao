@@ -17,10 +17,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class QuantificacaoMhController implements Initializable {
+public class QuantificacaoMhEBackboneController implements Initializable {
 
     @FXML
     private ToggleGroup grupo;
+
+    @FXML
+    private TextField box_backbone_andar;
+
+    @FXML
+    private ComboBox<?> box_categoria_fibra;
+
+    @FXML
+    private ComboBox<?> box_padrao_fibra;
+
+    @FXML
+    private TextField campo_pares_andar;
+
+    @FXML
+    private TextField campo_pe_direito;
 
     @FXML
     private RadioButton radio_bandeja_deslizante;
@@ -29,22 +44,10 @@ public class QuantificacaoMhController implements Initializable {
     private RadioButton radio_bandeja_fixa;
 
     @FXML
-    private Button botao_calculo;
-
-    @FXML
     private CheckBox box_area_reservada;
 
     @FXML
-    private CheckBox box_dados;
-
-    @FXML
     private CheckBox box_reguas_fechamento;
-
-    @FXML
-    private CheckBox box_seg;
-
-    @FXML
-    private CheckBox box_voz;
 
     @FXML
     private TextField campo_dados;
@@ -69,8 +72,6 @@ public class QuantificacaoMhController implements Initializable {
 
     @FXML
     private CheckBox box_DVR;
-
-
 
     @FXML
     void botao_calculo_acao(ActionEvent event) throws IOException {
@@ -101,6 +102,24 @@ public class QuantificacaoMhController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(ArmazenaEscolha.escolha=="backbone") {
+            campo_pts_pavimentos.setDisable(true);
+            categoria.setDisable(true);
+            campo_dt_malha.setDisable(true);
+            campo_n_pavimentos.setDisable(true);
+            campo_dados.setDisable(true);
+            campo_seg.setDisable(true);
+            campo_voz.setDisable(true);
+
+        }else if(ArmazenaEscolha.escolha=="malha_horizontal") {
+            campo_pares_andar.setDisable(true);
+            campo_pe_direito.setDisable(true);
+            box_backbone_andar.setDisable(true);
+            box_padrao_fibra.setDisable(true);
+            box_categoria_fibra.setDisable(true);
+        }
+
+
         List<String> lista = new ArrayList<>();
         lista.add("Cat 5e");
         lista.add("Cat 6");

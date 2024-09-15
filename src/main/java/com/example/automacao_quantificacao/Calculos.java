@@ -46,9 +46,6 @@ public class Calculos {
         String categoria_cabo = categoria;
 
 
-//        ObjetoColuna ob = new ObjetoColuna("Área de trabalho", "",0, 0);
-//        ArmazenaListaObjetosColuna.lista.add(ob);
-
         //Quantificacao das tomadas
         ObjetoColuna ob = new ObjetoColuna("Tomada RJ-45 fêmea (" + categoria_cabo + ")", "Unid.",
                 tomadas,
@@ -137,16 +134,30 @@ public class Calculos {
         //Montagem do rack
         if(bandeja_fixa)
             tamanho_bandeja=4;
+
         else
-            tamanho_bandeja=3;
+            tamanho_bandeja=2;
+
+        if (DVR) {
+            tamanho_rack+=2;
+            ob = new ObjetoColuna("DVR (Altura: 2U)", "Unid.", 1, 1);
+            ArmazenaListaObjetosColuna.lista.add(ob);
+        }
+
 
         tamanho_rack = (double) ((PP*2) + OF + tamanho_bandeja);
-
-        if (DVR)
-            tamanho_rack+=2;
-
         tamanho_rack = tamanho_rack*1.5;
         rack_informacoes = calculaTamanhoRack(tamanho_rack);
+
+        if(bandeja_fixa)
+            ob = new ObjetoColuna("Bandeja fixa (Altura: 4U)", "Unid.",
+                    rack_informacoes[1],
+                    rack_informacoes[1]*pav);
+        else
+            ob = new ObjetoColuna("Bandeja deslizante (Altura: 2U)", "Unid.",
+                    rack_informacoes[1],
+                    rack_informacoes[1]*pav);
+
 
         if(area_reservada)
         {
@@ -165,6 +176,7 @@ public class Calculos {
 
         ArmazenaListaObjetosColuna.lista.add(ob);
 
+        //Miscelanea
         ob = new ObjetoColuna("Etiquetas para identificação de tomadas e espelhos",
                 "Unid.",
                 tomadas + (tomadas/2),
@@ -223,12 +235,18 @@ public class Calculos {
         ArmazenaListaObjetosColuna.lista.add(ob);
 
         ob = new ObjetoColuna("Parafuso Porca Gaiola (Conjunto com 10 unidades)", "Conj.",
-                rack_informacoes[0]*4*rack_informacoes[1],
-                rack_informacoes[0]*4*rack_informacoes[1]*pav);
+                rack_informacoes[0]*4*rack_informacoes[1]/10,
+                rack_informacoes[0]*4*rack_informacoes[1]/10*pav);
 
         ArmazenaListaObjetosColuna.lista.add(ob);
 
     }
+
+
+    public static void calculafibra() {
+        //escreva o calculo da fibra aqui
+    }
+
 
     public static int[] calculaTamanhoRack(double tamanho_rack) {
 
@@ -255,6 +273,5 @@ public class Calculos {
             tamanho_rack/=2;
             quantidade_rack++;
         }
-
     }
 }

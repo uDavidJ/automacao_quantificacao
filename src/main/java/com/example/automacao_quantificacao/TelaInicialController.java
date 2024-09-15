@@ -20,8 +20,12 @@ public class TelaInicialController {
 
     @FXML
     void botao_prosseguir_acao(ActionEvent event) throws IOException {
-        if(box_mh.isSelected())
-            HelloApplication.renderizaTelas("quantificacao_mh");
+        if(box_bo.isSelected() && !(box_mh.isSelected()))
+            ArmazenaEscolha.escolha="backbone";
+        else if(box_mh.isSelected() && !(box_bo.isSelected()))
+            ArmazenaEscolha.escolha="malha_horizontal";
+
+        HelloApplication.renderizaTelas("quantificacao_mh_e_backbone");
 
     }
 

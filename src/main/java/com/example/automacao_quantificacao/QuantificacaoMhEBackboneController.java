@@ -87,6 +87,13 @@ public class QuantificacaoMhEBackboneController implements Initializable {
         if(box_reguas_fechamento.isSelected())
             Calculos.setReguaFechamento(true);
 
+        if (ArmazenaEscolha.escolha.equals("backbone")) {
+            Calculos.setFibra(box_categoria_fibra.getValue());
+            Calculos.setFibrasAndar(Integer.parseInt(campo_pares_andar.getText()));
+            Calculos.setPeDireito(Integer.parseInt(campo_pe_direito.getText()));
+            Calculos.setBackbones(Integer.parseInt(campo_backbone_andar.getText()));
+        }
+
         Calculos.calcula();
 
         HelloApplication.renderizaTelas("tabela");

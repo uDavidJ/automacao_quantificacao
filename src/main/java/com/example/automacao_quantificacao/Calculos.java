@@ -8,14 +8,34 @@ public class Calculos {
     public static String categoria;
     public static String campo_voz;
     public static String campo_seg;
-    public static String campo_dados;
     public static boolean bandeja_deslizante = false;
     public static boolean DVR = false;
     public static boolean area_reservada = false;
-    private static boolean regua_fechamento = false;
 
-    public static boolean getReguaFechamento() {
-        return regua_fechamento;
+    private static boolean regua_fechamento = false;
+    private static String cat_fibra;
+    private static int pe_direito;
+    private static int backbones_andar;
+    private static int fibras_andar;
+
+    public static void setRegua(boolean valor) {
+        regua_fechamento = valor;
+    }
+
+    public static void setFibra(String valor) {
+        cat_fibra = valor;
+    }
+
+    public static void setPeDireito(int valor) {
+        pe_direito = valor;
+    }
+
+    public static void setBackbones(int valor) {
+        backbones_andar = valor;
+    }
+
+    public static void setFibrasAndar(int valor) {
+        fibras_andar = valor;
     }
 
     public static void setReguaFechamento(boolean valor) {
@@ -190,11 +210,91 @@ public class Calculos {
 
             ArmazenaListaObjetosColuna.lista.add(ob);
         }
+
+        if (ArmazenaEscolha.escolha.equals("backbone")) {
+            calculafibra();
+        }
     }
 
 
     public static void calculafibra() {
-        //escreva o calculo da fibra aqui
+        final int[] tamanhos_dio = {12, 16, 24, 48};
+        final int[] tamanhos_to = {2, 4, 6, 8};
+        int tamanho_dios = 48;
+        int tamanho_tos = 8;
+        boolean todio = false;
+
+        for (int i = 0; i < 4; i++) {
+            if (fibras_andar <= tamanhos_dio[i]/2) {
+                tamanho_dios = tamanhos_dio[i];
+                break;
+            }
+        }
+
+        if (fibras_andar > 8) {
+            todio = true;
+            for (int i = 0; i < 4; i++) {
+                if (fibras_andar <= tamanhos_dio[i]) {
+                    tamanho_tos = tamanhos_dio[i];
+                    break;
+                }
+            }
+        } else {
+            for (int i = 0; i < 4; i++) {
+                if (fibras_andar <= tamanhos_to[i]) {
+                    tamanho_tos = tamanhos_to[i];
+                    break;
+                }
+            }
+        }
+
+        int nro_dios = (int) Math.ceil(fibras_andar*(campo_n_pavimentos-1)/(tamanho_dios * 1.0));
+        ObjetoColuna ob;
+
+        ob = new ObjetoColuna("Distribuidor Óptico (DIO) 1U "+tamanho_dios+" portas", "Unid.", nro_dios, nro_dios);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        ob = new ObjetoColuna("Caixa de emenda", "Unid.", 2, 2*nro_dios);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        ob = new ObjetoColuna("Pigtail "+cat_fibra+" (Simples) (Conector LC) (2M)", "Unid.", 2*fibras_andar, 2*fibras_andar*(campo_n_pavimentos-1));
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        int qtd_acop = (fibras_andar * (campo_n_pavimentos-1))/2;
+
+        ob = new ObjetoColuna("Acoplador óptico (Duplo) (Conector LC)", "Unid.", fibras_andar/2, 2*qtd_acop);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        ob = new ObjetoColuna("Cordão óptico (Duplo) (Conector LC)", "Unid.", fibras_andar/2, 2*qtd_acop);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        if (todio) {
+            ob = new ObjetoColuna("Distribuidor Óptico (DIO) 1U "+tamanho_tos+" portas", "Unid.", 1, nro_dios);
+            ArmazenaListaObjetosColuna.lista.add(ob);
+        } else {
+            ob = new ObjetoColuna("Terminador Óptico (TO) "+tamanho_tos+" portas", "Unid.", 1, nro_dios);
+            ArmazenaListaObjetosColuna.lista.add(ob);
+        }
+
+        int tam1 = 3 * pe_direito;
+        int tam2 = 3 * pe_direito + pe_direito * (campo_n_pavimentos-2);
+        int cabos = (int) Math.ceil((tam1 + tam2) * (campo_n_pavimentos-1)/2.0 * 1.1);
+
+        ob = new ObjetoColuna("Cabo óptico "+fibras_andar+" fibras "+cat_fibra+" tight buffer", "m", cabos, cabos);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        int n_switches = (int) Math.ceil(fibras_andar * (campo_n_pavimentos-1)/24.0);
+
+        ob = new ObjetoColuna(("Switch de fibra óptica 24 portas", "Unid", n_switches, n_switches));
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        ob = new ObjetoColuna("Organizador frontal de cabo (Altura: 1U)", "Unid.", n_switches, n_switches);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        int tam_rack = 2*n_switches + nro_dios;
+        int[] rack = calculaTamanhoRack(tam_rack*1.5);
+
+
     }
 
 

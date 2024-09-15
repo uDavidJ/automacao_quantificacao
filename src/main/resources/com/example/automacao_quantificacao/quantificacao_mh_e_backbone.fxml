@@ -72,17 +72,12 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Text layoutX="14.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° de pares/andar:">
+            <Text layoutX="14.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° de fibras/andar:">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
             <Text layoutX="14.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pé direito">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text layoutX="11.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Padrão de transmissão:">
                <font>
                   <Font size="18.0" />
                </font>
@@ -94,14 +89,13 @@
             </Text>
             <TextField fx:id="campo_pares_andar" layoutX="211.0" layoutY="59.0" />
             <TextField fx:id="campo_pe_direito" layoutX="211.0" layoutY="86.0" />
-            <ComboBox fx:id="box_padrao_fibra" layoutX="210.0" layoutY="141.0" prefWidth="150.0" />
             <ComboBox fx:id="box_categoria_fibra" layoutX="210.0" layoutY="114.0" prefWidth="150.0" />
-            <Text layoutX="11.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backbones/andar">
+            <Text layoutX="12.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backbones/andar">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="campo_backbone_andar" layoutX="211.0" layoutY="168.0" />
+            <TextField fx:id="campo_backbone_andar" layoutX="211.0" layoutY="142.0" />
          </children>
       </Pane>
       <Pane layoutY="345.0" prefHeight="155.0" prefWidth="800.0" style="-fx-border-color: black;">

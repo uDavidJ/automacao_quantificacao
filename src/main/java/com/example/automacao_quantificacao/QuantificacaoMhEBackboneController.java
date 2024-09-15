@@ -21,16 +21,10 @@ import java.util.ResourceBundle;
 public class QuantificacaoMhEBackboneController implements Initializable {
 
     @FXML
-    private ToggleGroup grupo;
-
-    @FXML
     private TextField campo_backbone_andar;
 
     @FXML
-    private ComboBox<?> box_categoria_fibra;
-
-    @FXML
-    private ComboBox<?> box_padrao_fibra;
+    private ComboBox<String> box_categoria_fibra;
 
     @FXML
     private TextField campo_pares_andar;
@@ -93,6 +87,13 @@ public class QuantificacaoMhEBackboneController implements Initializable {
         if(box_reguas_fechamento.isSelected())
             Calculos.setReguaFechamento(true);
 
+        if (ArmazenaEscolha.escolha.equals("backbone")) {
+            Calculos.setFibra(box_categoria_fibra.getValue());
+            Calculos.setFibrasAndar(Integer.parseInt(campo_pares_andar.getText()));
+            Calculos.setPeDireito(Integer.parseInt(campo_pe_direito.getText()));
+            Calculos.setBackbones(Integer.parseInt(campo_backbone_andar.getText()));
+        }
+
         Calculos.calcula();
 
         HelloApplication.renderizaTelas("tabela");
@@ -101,23 +102,13 @@ public class QuantificacaoMhEBackboneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(ArmazenaEscolha.escolha.equals("backbone")) {
-            campo_pts_pavimentos.setDisable(true);
-            categoria.setDisable(true);
-            campo_dt_malha.setDisable(true);
-            campo_n_pavimentos.setDisable(true);
-            campo_seg.setDisable(true);
-            campo_voz.setDisable(true);
-            box_bandeja_deslizante.setDisable(true);
-        }else if(ArmazenaEscolha.escolha.equals("malha_horizontal")) {
+        if(ArmazenaEscolha.escolha.equals("malha_horizontal")) {
             campo_pares_andar.setDisable(true);
             campo_pe_direito.setDisable(true);
             campo_backbone_andar.setDisable(true);
-            box_padrao_fibra.setDisable(true);
             box_categoria_fibra.setDisable(true);
             campo_n_pavimentos.setDisable(true);
         }
-
 
         List<String> lista = new ArrayList<>();
         lista.add("Cat 5e");
@@ -126,6 +117,13 @@ public class QuantificacaoMhEBackboneController implements Initializable {
 
         ObservableList<String> obscategorias = FXCollections.observableArrayList(lista);
         categoria.setItems(obscategorias);
+
+        lista = new ArrayList<>();
+        lista.add("FOMMIG 50x125");
+        lista.add("SM 9x125");
+
+        obscategorias = FXCollections.observableArrayList(lista);
+        box_categoria_fibra.setItems(obscategorias);
     }
 
 }

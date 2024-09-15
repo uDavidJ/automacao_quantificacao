@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="400.0" style="-fx-background-color: radial-gradient(center 50% 50% , radius 120px , #ffebcd, #008080); -fx-border-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.automacao_quantificacao.TelaInicialController">
    <children>
-      <Text layoutX="41.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Automação Quantificação">
+      <Text layoutX="41.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Automação Quantificação">
          <font>
             <Font name="Georgia" size="28.0" />
          </font>

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+
 public class QuantificacaoMhEBackboneController implements Initializable {
 
     @FXML
@@ -69,7 +70,12 @@ public class QuantificacaoMhEBackboneController implements Initializable {
     void botao_calculo_acao(ActionEvent event) throws IOException {
 
         Calculos.campo_pts_pavimentos=Integer.parseInt(campo_pts_pavimentos.getText());
-        Calculos.campo_n_pavimentos=Integer.parseInt(campo_n_pavimentos.getText());
+
+        if ( !(campo_n_pavimentos.getText() == null) && !(campo_n_pavimentos.getText().isEmpty()))
+            Calculos.campo_n_pavimentos = Integer.parseInt(campo_n_pavimentos.getText());
+        else
+            Calculos.campo_n_pavimentos = 1;
+
         Calculos.campo_dt_malha=Integer.parseInt(campo_dt_malha.getText());
         Calculos.categoria=categoria.getValue();
         Calculos.campo_voz=campo_voz.getText();
@@ -78,10 +84,14 @@ public class QuantificacaoMhEBackboneController implements Initializable {
         if(box_bandeja_deslizante.isSelected())
             Calculos.bandeja_deslizante=true;
 
-        if(!(campo_seg.getText().isEmpty()) && (Integer.parseInt(campo_seg.getText()) != 0))
+        if(!(campo_seg.getText() == null) && (Integer.parseInt(campo_seg.getText()) != 0))
             Calculos.DVR=true;
+
         if(box_area_reservada.isSelected())
             Calculos.area_reservada=true;
+
+        if(box_reguas_fechamento.isSelected())
+            Calculos.setReguaFechamento(true);
 
         Calculos.calcula();
 
@@ -98,13 +108,14 @@ public class QuantificacaoMhEBackboneController implements Initializable {
             campo_n_pavimentos.setDisable(true);
             campo_seg.setDisable(true);
             campo_voz.setDisable(true);
-
+            box_bandeja_deslizante.setDisable(true);
         }else if(ArmazenaEscolha.escolha.equals("malha_horizontal")) {
             campo_pares_andar.setDisable(true);
             campo_pe_direito.setDisable(true);
             campo_backbone_andar.setDisable(true);
             box_padrao_fibra.setDisable(true);
             box_categoria_fibra.setDisable(true);
+            campo_n_pavimentos.setDisable(true);
         }
 
 

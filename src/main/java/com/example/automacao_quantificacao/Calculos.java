@@ -12,10 +12,31 @@ public class Calculos {
     public static boolean bandeja_deslizante = false;
     public static boolean DVR = false;
     public static boolean area_reservada = false;
-    private static boolean regua_fechamento = false;
 
-    public static boolean getReguaFechamento() {
-        return regua_fechamento;
+    private static boolean regua_fechamento = false;
+    private static String cat_fibra;
+    private static int pe_direito;
+    private static int backbones_andar;
+    private static int fibras_andar;
+
+    public static void setRegua(boolean valor) {
+        regua_fechamento = valor;
+    }
+
+    public static void setFibra(String valor) {
+        cat_fibra = valor;
+    }
+
+    public static void pe_direito(int valor) {
+        pe_direito = valor;
+    }
+
+    public static void setBackbones(int valor) {
+        backbones_andar = valor;
+    }
+
+    public static void setFibrasAndar(int valor) {
+        fibras_andar = valor;
     }
 
     public static void setReguaFechamento(boolean valor) {

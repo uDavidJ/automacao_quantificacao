@@ -285,7 +285,7 @@ public class Calculos {
 
         int n_switches = (int) Math.ceil(fibras_andar * (campo_n_pavimentos-1)/24.0);
 
-        ob = new ObjetoColuna(("Switch de fibra óptica 24 portas", "Unid", n_switches, n_switches));
+        ob = new ObjetoColuna("Switch de fibra óptica 24 portas", "Unid", n_switches, n_switches);
         ArmazenaListaObjetosColuna.lista.add(ob);
 
         ob = new ObjetoColuna("Organizador frontal de cabo (Altura: 1U)", "Unid.", n_switches, n_switches);

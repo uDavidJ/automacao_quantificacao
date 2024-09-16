@@ -8,97 +8,97 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.automacao_quantificacao.QuantificacaoMhEBackboneController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: ffebcd;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.automacao_quantificacao.QuantificacaoMhEBackboneController">
    <children>
-      <Text layoutX="14.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Automação Cabeamento Estruturado">
+      <Text layoutX="196.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Automação Cabeamento Estruturado">
          <font>
-            <Font size="24.0" />
+            <Font name="Georgia" size="24.0" />
          </font>
       </Text>
-      <Pane layoutY="66.0" prefHeight="275.0" prefWidth="392.0">
+      <Pane layoutX="14.0" layoutY="70.0" prefHeight="275.0" prefWidth="380.0" style="-fx-background-radius: 20; -fx-background-color: radial-gradient(center 50% 50% , radius 500px , #ffebcd, #008080);">
          <children>
-            <Text layoutX="96.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Malha Horizontal" wrappingWidth="200.53680419921875">
+            <Text layoutX="96.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Malha Horizontal" wrappingWidth="200.53680419921875">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Georgia" size="24.0" />
                </font>
             </Text>
-            <Text layoutX="14.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° de pavimentos:">
+            <Text layoutX="14.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° de pavimentos">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Georgia" size="18.0" />
                </font>
             </Text>
-            <Text layoutX="14.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pontos p/ pavimento:">
+            <Text layoutX="202.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pontos p/ pavimento">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Georgia" size="18.0" />
                </font>
             </Text>
-            <Text layoutX="14.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distância média da M.H:">
+            <Text layoutX="8.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distância média da M.H">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Georgia" size="18.0" />
                </font>
             </Text>
-            <Text layoutX="14.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria:">
+            <Text layoutX="247.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Georgia" size="18.0" />
                </font>
             </Text>
-            <Text layoutX="11.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipos de serviços:">
+            <Text layoutX="8.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipos de serviços" wrappingWidth="191.45937500000002">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Georgia" size="23.0" />
                </font>
             </Text>
-            <TextField fx:id="campo_n_pavimentos" layoutX="211.0" layoutY="59.0" />
-            <TextField fx:id="campo_pts_pavimentos" layoutX="211.0" layoutY="86.0" />
-            <TextField fx:id="campo_dt_malha" layoutX="211.0" layoutY="114.0" />
-            <ComboBox fx:id="categoria" layoutX="210.0" layoutY="141.0" prefWidth="150.0" />
-            <TextField fx:id="campo_voz" layoutX="233.0" layoutY="169.0" prefHeight="25.0" prefWidth="85.0" />
-            <TextField fx:id="campo_seg" layoutX="233.0" layoutY="204.0" prefHeight="25.0" prefWidth="85.0" />
-            <Text layoutX="168.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VoIP" textAlignment="CENTER" wrappingWidth="56.10782470703123">
+            <TextField fx:id="campo_n_pavimentos" layoutX="78.0" layoutY="74.0" prefHeight="25.0" prefWidth="33.0" />
+            <TextField fx:id="campo_pts_pavimentos" layoutX="269.0" layoutY="74.0" prefHeight="25.0" prefWidth="33.0" />
+            <TextField fx:id="campo_dt_malha" layoutX="78.0" layoutY="136.0" prefHeight="25.0" prefWidth="33.0" />
+            <ComboBox fx:id="categoria" layoutX="211.0" layoutY="174.0" prefWidth="150.0" />
+            <TextField fx:id="campo_voz" layoutX="68.0" layoutY="229.0" prefHeight="25.0" prefWidth="33.0" />
+            <TextField fx:id="campo_seg" layoutX="156.0" layoutY="229.0" prefHeight="25.0" prefWidth="33.0" />
+            <Text layoutX="-22.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VoIP " textAlignment="CENTER" wrappingWidth="116.90787353515623">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Georgia" size="18.0" />
                </font>
             </Text>
-            <Text layoutX="168.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seg" textAlignment="CENTER" wrappingWidth="56.10782470703123">
+            <Text layoutX="104.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seg" textAlignment="CENTER" wrappingWidth="56.10782470703123">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Georgia" size="18.0" />
                </font>
             </Text>
          </children>
       </Pane>
-      <Pane layoutX="406.0" layoutY="66.0" prefHeight="275.0" prefWidth="392.0">
+      <Pane layoutX="406.0" layoutY="70.0" prefHeight="275.0" prefWidth="380.0" style="-fx-background-color: radial-gradient(center 50% 50% , radius 500px , #ffebcd, #008080); -fx-background-radius: 20;">
          <children>
-            <Text layoutX="96.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BackBone Óptico" wrappingWidth="200.53680419921875">
+            <Text layoutX="110.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BackBone Óptico" wrappingWidth="200.53680419921875">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Georgia" size="24.0" />
                </font>
             </Text>
-            <Text layoutX="14.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° de fibras/andar:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text layoutX="14.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pé direito">
+            <Text layoutX="7.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° de fibras/andar">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="12.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria:">
+            <Text layoutX="7.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pé direito">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="campo_pares_andar" layoutX="211.0" layoutY="59.0" />
-            <TextField fx:id="campo_pe_direito" layoutX="211.0" layoutY="86.0" />
-            <ComboBox fx:id="box_categoria_fibra" layoutX="210.0" layoutY="114.0" prefWidth="150.0" />
-            <Text layoutX="12.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backbones/andar">
+            <Text layoutX="244.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="campo_backbone_andar" layoutX="211.0" layoutY="142.0" />
+            <TextField fx:id="campo_pares_andar" layoutX="167.0" layoutY="68.0" prefHeight="25.0" prefWidth="33.0" />
+            <TextField fx:id="campo_pe_direito" layoutX="94.0" layoutY="109.0" prefHeight="25.0" prefWidth="33.0" />
+            <ComboBox fx:id="box_categoria_fibra" layoutX="209.0" layoutY="138.0" prefWidth="150.0" />
+            <Text layoutX="7.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backbones/andar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="campo_backbone_andar" layoutX="151.0" layoutY="181.0" prefHeight="25.0" prefWidth="33.0" />
          </children>
       </Pane>
-      <Pane layoutY="345.0" prefHeight="155.0" prefWidth="800.0" style="-fx-border-color: black;">
+      <Pane layoutY="345.0" prefHeight="155.0" prefWidth="800.0">
          <children>
             <CheckBox fx:id="box_area_reservada" layoutX="320.0" layoutY="78.0" mnemonicParsing="false" text="Área reservada">
                <font>
@@ -120,11 +120,8 @@
                   <Font size="16.0" />
                </font>
             </CheckBox>
+            <Button fx:id="botao_calculo" layoutX="544.0" layoutY="79.0" mnemonicParsing="false" onAction="#botao_calculo_acao" prefHeight="39.0" prefWidth="237.0" text="Calcular" />
          </children>
       </Pane>
-      <Pane prefHeight="68.0" prefWidth="800.0" style="-fx-border-color: black;">
-         <children>
-            <Button fx:id="botao_calculo" layoutX="549.0" layoutY="15.0" mnemonicParsing="false" onAction="#botao_calculo_acao" prefHeight="39.0" prefWidth="237.0" text="Calcular" />
-         </children></Pane>
    </children>
 </Pane>

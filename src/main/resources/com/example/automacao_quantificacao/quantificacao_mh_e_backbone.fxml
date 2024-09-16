@@ -54,12 +54,12 @@
             <ComboBox fx:id="categoria" layoutX="211.0" layoutY="174.0" prefWidth="150.0" />
             <TextField fx:id="campo_voz" layoutX="68.0" layoutY="229.0" prefHeight="25.0" prefWidth="33.0" />
             <TextField fx:id="campo_seg" layoutX="156.0" layoutY="229.0" prefHeight="25.0" prefWidth="33.0" />
-            <Text layoutX="-22.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VoIP " textAlignment="CENTER" wrappingWidth="116.90787353515623">
+            <Text layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VoIP " textAlignment="CENTER" wrappingWidth="65.015625">
                <font>
                   <Font name="Georgia" size="18.0" />
                </font>
             </Text>
-            <Text layoutX="104.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seg" textAlignment="CENTER" wrappingWidth="56.10782470703123">
+            <Text layoutX="111.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seg" textAlignment="CENTER" wrappingWidth="43.30780639648435">
                <font>
                   <Font name="Georgia" size="18.0" />
                </font>

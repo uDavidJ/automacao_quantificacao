@@ -16,11 +16,16 @@ public class TelaInicialController {
     private CheckBox box_bo;
 
     @FXML
+    private CheckBox box_mh;
+
+    @FXML
     void botao_prosseguir_acao(ActionEvent event) throws IOException {
-        if(box_bo.isSelected())
+        if(box_bo.isSelected() && !(box_mh.isSelected()))
             ArmazenaEscolha.escolha="backbone";
-        else
+        else if(box_mh.isSelected() && !(box_bo.isSelected()))
             ArmazenaEscolha.escolha="malha_horizontal";
+        else
+            ArmazenaEscolha.escolha="malha_horizontal_e_backbone";
 
         HelloApplication.renderizaTelas("quantificacao_mh_e_backbone");
 

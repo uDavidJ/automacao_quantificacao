@@ -6,13 +6,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-//
-// Decisões para serem tomadas a respeito do projeto:
-// A quantificação levará em consideração mais de um prédio ?
-// Realização do algoritmo para exportação da planilha: arquivo xls, csv, excel ou pdf ?
-// Será somente uma tela ?
-// Como ficará a questão da quantificação quando envolver backbone de fibra ?
-//
 
 public class HelloApplication extends Application {
 

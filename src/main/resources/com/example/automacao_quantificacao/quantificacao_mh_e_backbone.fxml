@@ -59,12 +59,6 @@
                   <Font name="Georgia" size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="campo_backbone_andar" layoutX="244.0" layoutY="226.0" prefHeight="25.0" prefWidth="33.0" />
-            <Text layoutX="85.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backbones/andar">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
             <Text layoutX="253.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dados" textAlignment="CENTER" wrappingWidth="87.30780639648435">
                <font>
                   <Font name="Georgia" size="18.0" />

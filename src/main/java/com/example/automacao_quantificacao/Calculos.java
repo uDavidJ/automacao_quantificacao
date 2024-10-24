@@ -303,7 +303,7 @@ public class Calculos {
             ob = new ObjetoColuna("Terminador Óptico (TO) "+tamanho_tos+" portas", "Unid.", 1, campo_n_pavimentos-1);
             ArmazenaListaObjetosColuna.lista.add(ob);
 
-            ob = new ObjetoColuna("Pigtail "+cat_fibra+" (Duplo) (Conector LC)", "Unid.", fibras_andar, fibras_andar*(campo_n_pavimentos-1));
+            ob = new ObjetoColuna("Pigtail "+cat_fibra+" (Simples) (Conector LC)", "Unid.", fibras_andar, fibras_andar*(campo_n_pavimentos-1));
             ArmazenaListaObjetosColuna.lista.add(ob);
 
             nro_etiquetas += fibras_andar*(campo_n_pavimentos-1);

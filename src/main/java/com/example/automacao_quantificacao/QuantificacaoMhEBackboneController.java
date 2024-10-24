@@ -20,8 +20,7 @@ import java.util.ResourceBundle;
 
 public class QuantificacaoMhEBackboneController implements Initializable {
 
-    @FXML
-    private TextField campo_backbone_andar;
+
 
     @FXML
     private ComboBox<String> box_categoria_fibra;
@@ -61,8 +60,6 @@ public class QuantificacaoMhEBackboneController implements Initializable {
 
     @FXML
     private CheckBox box_backbone_secundario;
-    @FXML
-    private TextField campo_pares_fibra_BBP;
 
     @FXML
     private TextField campo_pares_fibra_BBS;
@@ -83,19 +80,22 @@ public class QuantificacaoMhEBackboneController implements Initializable {
     private Text texto_fibra_backbone_secundario;
 
     @FXML
-    private Text texto_numero_predios;
+    private Text texto_distancia_predios;
 
     @FXML
     void botao_calculo_acao(ActionEvent event) throws IOException {
 
-        Calculos.campo_pts_pavimentos=Integer.parseInt(campo_pts_pavimentos.getText());
+        if ((campo_pts_pavimentos != null) && !campo_pts_pavimentos.getText().isEmpty())
+            Calculos.campo_pts_pavimentos=Integer.parseInt(campo_pts_pavimentos.getText());
 
         if ( !(campo_n_pavimentos.getText() == null) && !(campo_n_pavimentos.getText().isEmpty()))
             Calculos.campo_n_pavimentos = Integer.parseInt(campo_n_pavimentos.getText());
         else
             Calculos.campo_n_pavimentos = 1;
 
-        Calculos.campo_dt_malha=Integer.parseInt(campo_dt_malha.getText());
+        if ((campo_dt_malha != null) && !campo_dt_malha.getText().isEmpty())
+            Calculos.campo_dt_malha=Integer.parseInt(campo_dt_malha.getText());
+
         Calculos.categoria=categoria.getValue();
         Calculos.campo_voz=campo_voz.getText();
         Calculos.campo_seg=campo_seg.getText();
@@ -104,8 +104,9 @@ public class QuantificacaoMhEBackboneController implements Initializable {
         if(box_bandeja_deslizante.isSelected())
             Calculos.bandeja_deslizante=true;
 
-        if(!(campo_seg.getText() == null) && (Integer.parseInt(campo_seg.getText()) != 0))
-            Calculos.DVR=true;
+        if(!(campo_seg.getText() == null) && !campo_seg.getText().isEmpty())
+            if (Integer.parseInt(campo_seg.getText()) != 0)
+                Calculos.DVR=true;
 
         if(box_area_reservada.isSelected())
             Calculos.area_reservada=true;
@@ -115,11 +116,10 @@ public class QuantificacaoMhEBackboneController implements Initializable {
 
 
         //parte de fibra
-        if (ArmazenaEscolha.escolha.equals("backbone")) {
+        if (ArmazenaEscolha.escolha.contains("backbone")) {
+            Calculos.setPeDireito(Integer.parseInt(campo_pe_direito.getText()));
             Calculos.setFibra(box_categoria_fibra.getValue());
             Calculos.setFibrasAndar(Integer.parseInt(campo_pares_fibra_EF.getText()));
-            Calculos.setPeDireito(Integer.parseInt(campo_pe_direito.getText()));
-            Calculos.setBackbones(Integer.parseInt(campo_backbone_andar.getText()));
         }
 
         Calculos.calcula();
@@ -132,9 +132,7 @@ public class QuantificacaoMhEBackboneController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(ArmazenaEscolha.escolha.equals("malha_horizontal")) {
             campo_pares_fibra_EF.setDisable(true);
-            campo_pares_fibra_BBP.setDisable(true);
             campo_pe_direito.setDisable(true);
-            campo_backbone_andar.setDisable(true);
             box_categoria_fibra.setDisable(true);
         } else if(ArmazenaEscolha.escolha.equals("backbone")) {
             campo_pts_pavimentos.setDisable(true);
@@ -166,12 +164,12 @@ public class QuantificacaoMhEBackboneController implements Initializable {
             campo_pares_fibra_BBS.setOpacity(1.0);
             campo_n_predios.setOpacity(1.0);
             texto_fibra_backbone_secundario.setOpacity(1.0);
-            texto_numero_predios.setOpacity(1.0);
+            texto_distancia_predios.setOpacity(1.0);
         } else {
             campo_pares_fibra_BBS.setOpacity(0.0);
             campo_n_predios.setOpacity(0.0);
             texto_fibra_backbone_secundario.setOpacity(0.0);
-            texto_numero_predios.setOpacity(0.0);
+            texto_distancia_predios.setOpacity(0.0);
         }
     }
 }

@@ -383,12 +383,7 @@ public class Calculos {
             ArmazenaListaObjetosColuna.lista.add(ob);
         }
 
-<<<<<<< HEAD
-=======
-        if(!(ArmazenaEscolha.escolha.equals("malha_horizontal")) && campo_n_pavimentos!=1)
-            campo_n_pavimentos--;
 
->>>>>>> origin/master
         if(ArmazenaEscolha.escolha.contains("malha")) {
             if(voz != 0) {
                 ob = new ObjetoColuna("Patch Cable (Cor: Amarelo) (Tamanho: 2M) (" + categoria_cabo + ")", "Unid.", voz*2, voz * 2*campo_n_pavimentos);

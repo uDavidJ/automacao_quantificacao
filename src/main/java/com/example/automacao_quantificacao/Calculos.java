@@ -37,15 +37,37 @@ public class Calculos {
 
     public static double tamanho_rack_set = 0;
     public static double tamanho_rack_seq = 0;
+    public static double quantidade_rack_seq = 0;
 
     private static boolean regua_fechamento = false;
     private static String cat_fibra;
     private static int pe_direito;
-    private static int backbones_andar;
     private static int fibras_andar;
 
     private static int qtd_pares_externo;
     private static int distancia_externo;
+
+    private static int EITE = 0;
+    private static int ETMH = 0;
+    private static int EIPPP = 0;
+    private static int EIPP = 0;
+    private static int EIPC = 0;
+
+    private static int quantidade_pigtails = 0;
+    private static int quantidade_cordoes = 0;
+    private static int quantidade_dios = 0;
+    private static int quantidade_switches = 0;
+
+    //RACK
+    private static int quantidade_racks;
+    private static int velcro = 0;
+    private static int hellerman = 0;
+
+    private static int PPG = 0;
+    private static int SW = 0;
+
+
+
 
     public static void setParesExterno(int valor) {
         qtd_pares_externo = valor;
@@ -80,9 +102,6 @@ public class Calculos {
         pe_direito = valor;
     }
 
-    public static void setBackbones(int valor) {
-        backbones_andar = valor;
-    }
 
     public static void setFibrasAndar(int valor) {
         fibras_andar = valor;
@@ -161,47 +180,6 @@ public class Calculos {
             else
                 tamanho_rack_set+=rack_informacoes[0];
 
-
-//            ob = new ObjetoColuna("Rack (" + modelo_rack + ")" + "(Tamanho: " + String.valueOf(rack_informacoes[0]) + "U)", "Unid.", rack_informacoes[1], rack_informacoes[1]*pav);
-//            ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//            ob = new ObjetoColuna(" ", " ", " ", " ");
-//            ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//            ob = new ObjetoColuna("MISCELÂNEA - MALHA HORIZONTAL", " ", " ", " ");
-//            ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//            //Miscelanea
-//            ob = new ObjetoColuna("Etiquetas para tomadas e espelhos", "Unid.", ETITE, ETITE*pav);
-//            ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//            ob = new ObjetoColuna("Etiqueta para identificação do cabo de malha horizontal", "Unid.", tomadas*2, (tomadas*2) * pav);
-//            ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//            ob = new ObjetoColuna("Etiquetas para identificação de portas do Patch Panel", "Unid.", PP*24, (PP*24) * pav);
-//            ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//            ob = new ObjetoColuna("Etiquetas para Rack", "Unid.", rack_informacoes[1], rack_informacoes[1]*pav);
-//            ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//            ob = new ObjetoColuna("Etiquetas para SW e PP", "Unid.", PP*2, (PP*2) * pav);
-//            ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//            ob = new ObjetoColuna("Etiquetas para identificação dos Patch Cables", "Unid.", tomadas*2, (tomadas*2) * pav);
-//            ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//            ob = new ObjetoColuna("Abraçadeira de velcro", "m", rack_informacoes[1]*3, rack_informacoes[1]*3*pav);
-//            ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//            ob = new ObjetoColuna("Abraçadeira Hellermann (Pacote com 100 unidades)", "Conj.", rack_informacoes[1], rack_informacoes[1]*pav);
-//            ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//            ob = new ObjetoColuna("Filtro de linha 6 tomadas", "Unid.", rack_informacoes[1], rack_informacoes[1]*pav);
-//            ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//            ob = new ObjetoColuna("Parafuso Porca Gaiola (Conjunto com 10 unidades)", "Conj.", (int) Math.ceil(rack_informacoes[0]*4*rack_informacoes[1]/10.0), (int) Math.ceil(rack_informacoes[0]*4*rack_informacoes[1]/10.0)*pav);
-//            ArmazenaListaObjetosColuna.lista.add(ob);
-
         }
     }
 
@@ -247,7 +225,6 @@ public class Calculos {
 
         if(todio)
             tamanho_rack_set+=2;
-        nro_etiquetas += 2*qtd_acop;
 
         ob = new ObjetoColuna(" ", " ", " ", " ");
         ArmazenaListaObjetosColuna.lista.add(ob);
@@ -265,35 +242,6 @@ public class Calculos {
         ob = new ObjetoColuna("Cabo óptico "+fibras_andar+" fibras "+cat_fibra+" tight buffer", "m", cabos, cabos);
         ArmazenaListaObjetosColuna.lista.add(ob);
 
-
-//        ob = new ObjetoColuna("Rack "+tipo_rack+" "+rack[0]+"U", "Unid.", rack[1], rack[1]);
-//        ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//        int porca_gaiola = (int) Math.ceil(rack[0] * 4/10.0);
-//
-//        ob = new ObjetoColuna("", " ", " ", " ");
-//        ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//        ob = new ObjetoColuna("MISCELÂNEA - BACKBONE", " ", " ", " ");
-//        ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//        ob = new ObjetoColuna("Parafuso Porca Gaiola (Conjunto com 10 unidades)", "Conj.", porca_gaiola, porca_gaiola);
-//        ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//        ob = new ObjetoColuna("Abraçadeira de velcro", "m", rack[1]*3, rack[1]*3);
-//        ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//        ob = new ObjetoColuna("Abraçadeira Hellermann", "Conj.", rack[1], rack[1]*3);
-//        ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//        ob = new ObjetoColuna("Filtro de linha 6 tomadas", "Unid.", rack[1], rack[1]);
-//        ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//        ob = new ObjetoColuna("Etiquetas para Rack", "Unid.", rack[1], rack[1]);
-//        ArmazenaListaObjetosColuna.lista.add(ob);
-//
-//        ob = new ObjetoColuna("Etiquetas para pigtail e cordão óptico", "Unid.", nro_etiquetas, nro_etiquetas);
-//        ArmazenaListaObjetosColuna.lista.add(ob);
     }
 
 
@@ -367,6 +315,10 @@ public class Calculos {
                 ob = new ObjetoColuna("Cordão óptico "+cat_fibra+" (Duplo) (Conector LC) (2M)", "Unid.", fibras_andar/2, (fibras_andar/2)*(campo_n_pavimentos-1));
                 ArmazenaListaObjetosColuna.lista.add(ob);
 
+                quantidade_dios+=quantidade_dios*campo_n_pavimentos-1;
+                quantidade_cordoes+=(fibras_andar/2)*(campo_n_pavimentos-1);
+                quantidade_switches+=(PP+1)*campo_n_pavimentos;
+
                 //nro_etiquetas += 2 * ((fibras_andar/2)*(campo_n_pavimentos-1));
             } else {
                 ob = new ObjetoColuna("Terminador Óptico (TO) "+tamanho_tos+" portas", "Unid.", 1, campo_n_pavimentos-1);
@@ -375,12 +327,16 @@ public class Calculos {
                 ob = new ObjetoColuna("Pigtail "+cat_fibra+" (Simples) (Conector LC)", "Unid.", fibras_andar, fibras_andar*(campo_n_pavimentos-1));
                 ArmazenaListaObjetosColuna.lista.add(ob);
 
+                quantidade_pigtails+=fibras_andar*(campo_n_pavimentos-1);
+
                 //nro_etiquetas += fibras_andar*(campo_n_pavimentos-1);
             }
 
         }else if(ArmazenaEscolha.escolha.contains("malha")){
             ob = new ObjetoColuna("Switches (Altura: 1U)", "Unid.", PP, PP*campo_n_pavimentos);
             ArmazenaListaObjetosColuna.lista.add(ob);
+
+            quantidade_switches+=PP*campo_n_pavimentos;
         }
 
 
@@ -441,8 +397,15 @@ public class Calculos {
             ArmazenaListaObjetosColuna.lista.add(ob);
         }
 
-        ob = new ObjetoColuna("Rack (" + modelo_rack + ") (Altura: " + rack_informacoes[0] + "U)", "Unid.", rack_informacoes[1], rack_informacoes[1]*campo_n_pavimentos);
-        ArmazenaListaObjetosColuna.lista.add(ob);
+        if(!(ArmazenaEscolha.escolha.equals("malha_horizontal"))) {
+            ob = new ObjetoColuna("Rack (" + modelo_rack + ") (Altura: " + rack_informacoes[0] + "U)", "Unid.", rack_informacoes[1], rack_informacoes[1]*(campo_n_pavimentos-1));
+            ArmazenaListaObjetosColuna.lista.add(ob);
+            quantidade_racks+=rack_informacoes[1]*(campo_n_pavimentos-1);
+        }else {
+            ob = new ObjetoColuna("Rack (" + modelo_rack + ") (Altura: " + rack_informacoes[0] + "U)", "Unid.", rack_informacoes[1], rack_informacoes[1]*campo_n_pavimentos);
+            ArmazenaListaObjetosColuna.lista.add(ob);
+            quantidade_racks+=rack_informacoes[1]*(campo_n_pavimentos);
+        }
 
 
     }
@@ -501,7 +464,8 @@ public class Calculos {
 
         ob = new ObjetoColuna("Rack (" + modelo_rack + ") (" + rack_informacoes[0] + "U)", "Unid.", rack_informacoes[1], rack_informacoes[1]);
         ArmazenaListaObjetosColuna.lista.add(ob);
-
+        quantidade_racks+=rack_informacoes[1];
+        quantidade_rack_seq=rack_informacoes[1];
 
     }
 
@@ -528,6 +492,7 @@ public class Calculos {
 
         ob = new ObjetoColuna("Distribuidor Óptico (DIO) 1U "+dio_escolhido+" portas", "Unid.", 1, 2);
         ArmazenaListaObjetosColuna.lista.add(ob);
+        quantidade_dios+=2;
 
         ob = new ObjetoColuna("Caixa de emenda", "Unid.", 2, 4);
         ArmazenaListaObjetosColuna.lista.add(ob);
@@ -539,5 +504,75 @@ public class Calculos {
         ArmazenaListaObjetosColuna.lista.add(ob);
 
         ob = new ObjetoColuna("Cordão óptico 9x125 (Duplo) (Conector LC) (2M)", "Unid.", qtd_pares_externo, 2*qtd_pares_externo);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+        quantidade_cordoes+=2*qtd_pares_externo;
+    }
+
+    public static void calcula_miscelanea() {
+        ObjetoColuna ob;
+
+        if(ArmazenaEscolha.escolha.contains("malha")) {
+            ob = new ObjetoColuna(" ", "", "", "");
+            ArmazenaListaObjetosColuna.lista.add(ob);
+            ob = new ObjetoColuna("MISCELÂNEA", "", "", "");
+            ArmazenaListaObjetosColuna.lista.add(ob);
+
+            ob = new ObjetoColuna("Etiqueta de identificação de tomadas e espelhos", "Unid.", (tomadas/2)*3*campo_n_pavimentos, (tomadas/2)*3*campo_n_pavimentos);
+            ArmazenaListaObjetosColuna.lista.add(ob);
+
+            ob = new ObjetoColuna("Etiqueta de identificação de malha horizontal", "Unid.", tomadas*2*campo_n_pavimentos, tomadas*2*campo_n_pavimentos);
+            ArmazenaListaObjetosColuna.lista.add(ob);
+
+            ob = new ObjetoColuna("Etiqueta de identificação de patch panels", "Unid.", PP*campo_n_pavimentos, PP*campo_n_pavimentos);
+            ArmazenaListaObjetosColuna.lista.add(ob);
+
+            ob = new ObjetoColuna("Etiqueta de identificação de portas do patch panel", "Unid.", PP*24, PP*24);
+            ArmazenaListaObjetosColuna.lista.add(ob);
+
+            ob = new ObjetoColuna("Etiqueta de patch cables", "Unid.", tomadas*2*campo_n_pavimentos, tomadas*2*campo_n_pavimentos);
+            ArmazenaListaObjetosColuna.lista.add(ob);
+
+        }
+
+        if(ArmazenaEscolha.escolha.contains("backbone")) {
+            ob = new ObjetoColuna("Etiquetas para pigtail e cordão óptico", "Unid.", quantidade_cordoes+quantidade_pigtails, quantidade_cordoes+quantidade_pigtails);
+            ArmazenaListaObjetosColuna.lista.add(ob);
+
+            ob = new ObjetoColuna("Etiquetas para DIOS e SWITCHES", "Unid.", quantidade_dios+quantidade_switches, quantidade_dios+quantidade_switches);
+            ArmazenaListaObjetosColuna.lista.add(ob);
+
+        }else {
+            ob = new ObjetoColuna("Etiquetas para SWITCHES", "Unid.", quantidade_switches, quantidade_switches);
+            ArmazenaListaObjetosColuna.lista.add(ob);
+        }
+
+        ob = new ObjetoColuna("Etiquetas para racks", "Unid.", quantidade_racks, quantidade_racks);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        ob = new ObjetoColuna("Abraçadeira de velcro", "m.", quantidade_racks*3, quantidade_racks*3);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        ob = new ObjetoColuna("Abraçadeira Hellermann (Conjunto com 100 unidades)", "Conj.", quantidade_racks, quantidade_racks);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        ob = new ObjetoColuna("Filtro de linha com 6 tomadas", "Unid.", quantidade_racks, quantidade_racks);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        if(ArmazenaEscolha.escolha.equals("malha_horizontal")) {
+            int calculo_parafuso = (int) Math.ceil((tamanho_rack_set*4*campo_n_pavimentos)/10);
+
+            ob = new ObjetoColuna("Porca gaiola (Conjunto com 10 unidades", "Conj.", calculo_parafuso, calculo_parafuso);
+            ArmazenaListaObjetosColuna.lista.add(ob);
+        }else {
+            int calculo_parafuso =  (int) Math.ceil(((tamanho_rack_set*4*(campo_n_pavimentos-1)) + (tamanho_rack_seq*quantidade_rack_seq))/10);
+            ob = new ObjetoColuna("Porca gaiola (Conjunto com 10 unidades", "Conj.", calculo_parafuso, calculo_parafuso);
+            ArmazenaListaObjetosColuna.lista.add(ob);
+        }
+
+        if(modelo_rack=="Fechado") {
+            ob = new ObjetoColuna("Rodizio", "Jogo", quantidade_racks, quantidade_racks);
+            ArmazenaListaObjetosColuna.lista.add(ob);
+        }
+
     }
 }

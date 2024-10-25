@@ -142,6 +142,9 @@ public class QuantificacaoMhEBackboneController implements Initializable {
             Calculos.calcula_backbone_externo();
         }
 
+
+        Calculos.calcula_miscelanea();
+
         HelloApplication.renderizaTelas("tabela");
 
     }

@@ -364,7 +364,7 @@ public class Calculos {
             ArmazenaListaObjetosColuna.lista.add(ob);
         }
 
-        if(!(ArmazenaEscolha.escolha.equals("malha")) && campo_n_pavimentos!=1)
+        if(!(ArmazenaEscolha.escolha.equals("malha_horizontal")) && campo_n_pavimentos!=1)
             campo_n_pavimentos--;
 
         if(ArmazenaEscolha.escolha.contains("malha")) {

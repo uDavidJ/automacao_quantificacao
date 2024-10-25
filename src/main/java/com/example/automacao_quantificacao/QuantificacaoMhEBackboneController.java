@@ -99,9 +99,23 @@ public class QuantificacaoMhEBackboneController implements Initializable {
                 Calculos.campo_dt_malha=Integer.parseInt(campo_dt_malha.getText());
 
             Calculos.categoria=categoria.getValue();
-            Calculos.campo_voz=campo_voz.getText();
-            Calculos.campo_seg=campo_seg.getText();
-            Calculos.campo_dados=campo_dados.getText();
+            if(campo_voz.getText().isEmpty()) {
+                Calculos.campo_voz= "0";
+            }else{
+                Calculos.campo_voz = campo_voz.getText();
+            }
+
+            if(campo_seg.getText().isEmpty()) {
+                Calculos.campo_seg = "0";
+            }else{
+                Calculos.campo_seg = campo_seg.getText();
+            }
+
+            if(campo_seg.getText().isEmpty()){
+                Calculos.campo_dados = "0";
+            }else{
+                Calculos.campo_dados = campo_dados.getText();
+            }
 
             if(box_bandeja_deslizante.isSelected())
                 Calculos.bandeja_deslizante=true;
@@ -146,7 +160,6 @@ public class QuantificacaoMhEBackboneController implements Initializable {
         Calculos.calcula_miscelanea();
 
         HelloApplication.renderizaTelas("tabela");
-
     }
 
     @Override

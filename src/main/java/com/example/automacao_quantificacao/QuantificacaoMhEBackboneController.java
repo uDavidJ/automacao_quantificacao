@@ -93,36 +93,45 @@ public class QuantificacaoMhEBackboneController implements Initializable {
         else
             Calculos.campo_n_pavimentos = 1;
 
-        if ((campo_dt_malha != null) && !campo_dt_malha.getText().isEmpty())
-            Calculos.campo_dt_malha=Integer.parseInt(campo_dt_malha.getText());
 
-        Calculos.categoria=categoria.getValue();
-        Calculos.campo_voz=campo_voz.getText();
-        Calculos.campo_seg=campo_seg.getText();
-        Calculos.campo_dados=campo_dados.getText();
+        if(ArmazenaEscolha.escolha.contains("malha")) {
+            if ((campo_dt_malha != null) && !campo_dt_malha.getText().isEmpty())
+                Calculos.campo_dt_malha=Integer.parseInt(campo_dt_malha.getText());
 
-        if(box_bandeja_deslizante.isSelected())
-            Calculos.bandeja_deslizante=true;
+            Calculos.categoria=categoria.getValue();
+            Calculos.campo_voz=campo_voz.getText();
+            Calculos.campo_seg=campo_seg.getText();
+            Calculos.campo_dados=campo_dados.getText();
 
-        if(!(campo_seg.getText() == null) && !campo_seg.getText().isEmpty())
-            if (Integer.parseInt(campo_seg.getText()) != 0)
-                Calculos.DVR=true;
+            if(box_bandeja_deslizante.isSelected())
+                Calculos.bandeja_deslizante=true;
 
-        if(box_area_reservada.isSelected())
-            Calculos.area_reservada=true;
+            if(!(campo_seg.getText() == null) && !campo_seg.getText().isEmpty())
+                if (Integer.parseInt(campo_seg.getText()) != 0)
+                    Calculos.DVR=true;
 
-        if(box_reguas_fechamento.isSelected())
-            Calculos.setReguaFechamento(true);
+            if(box_area_reservada.isSelected())
+                Calculos.area_reservada=true;
 
+            if(box_reguas_fechamento.isSelected())
+                Calculos.setReguaFechamento(true);
 
-        //parte de fibra
+            Calculos.calcula();
+        }
+
         if (ArmazenaEscolha.escolha.contains("backbone")) {
             Calculos.setPeDireito(Integer.parseInt(campo_pe_direito.getText()));
             Calculos.setFibra(box_categoria_fibra.getValue());
             Calculos.setFibrasAndar(Integer.parseInt(campo_pares_fibra_EF.getText()));
+
+            Calculos.calculafibra();
         }
 
-        Calculos.calcula();
+        Calculos.calcula_rack_set(Calculos.tamanho_rack_set);
+
+        if(ArmazenaEscolha.escolha.contains("backbone"))
+            Calculos.calcula_rack_seq();
+
 
         HelloApplication.renderizaTelas("tabela");
 

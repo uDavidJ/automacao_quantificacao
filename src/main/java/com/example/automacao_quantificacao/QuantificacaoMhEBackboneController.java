@@ -132,6 +132,15 @@ public class QuantificacaoMhEBackboneController implements Initializable {
         if(ArmazenaEscolha.escolha.contains("backbone"))
             Calculos.calcula_rack_seq();
 
+        if(ArmazenaEscolha.getBe()) {
+            if ((campo_pares_fibra_BBS != null) && !campo_pares_fibra_BBS.getText().isEmpty())
+                Calculos.setParesExterno(Integer.parseInt(campo_pares_fibra_BBS.getText()));
+
+            if ((campo_n_predios != null) && !campo_n_predios.getText().isEmpty())
+                Calculos.setDistanciaExterna(Integer.parseInt(campo_n_predios.getText()));
+
+            Calculos.calcula_backbone_externo();
+        }
 
         HelloApplication.renderizaTelas("tabela");
 
@@ -170,11 +179,13 @@ public class QuantificacaoMhEBackboneController implements Initializable {
     @FXML
     void radio_button_backbone_secundario_acao(ActionEvent event) {
         if(radio_button_backbone_secundario.isSelected()) {
+            ArmazenaEscolha.setBe(true);
             campo_pares_fibra_BBS.setOpacity(1.0);
             campo_n_predios.setOpacity(1.0);
             texto_fibra_backbone_secundario.setOpacity(1.0);
             texto_distancia_predios.setOpacity(1.0);
         } else {
+            ArmazenaEscolha.setBe(false);
             campo_pares_fibra_BBS.setOpacity(0.0);
             campo_n_predios.setOpacity(0.0);
             texto_fibra_backbone_secundario.setOpacity(0.0);

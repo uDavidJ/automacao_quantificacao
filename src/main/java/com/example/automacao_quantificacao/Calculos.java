@@ -44,6 +44,25 @@ public class Calculos {
     private static int backbones_andar;
     private static int fibras_andar;
 
+    private static int qtd_pares_externo;
+    private static int distancia_externo;
+
+    public static void setParesExterno(int valor) {
+        qtd_pares_externo = valor;
+    }
+
+    public static int getQtdParesExterno() {
+        return qtd_pares_externo;
+    }
+
+    public static void setDistanciaExterna(int valor) {
+        distancia_externo = valor;
+    }
+
+    public static int getDistanciaExterna() {
+        return distancia_externo;
+    }
+
     public static void setRegua(boolean valor) {
         regua_fechamento = valor;
     }
@@ -364,9 +383,6 @@ public class Calculos {
             ArmazenaListaObjetosColuna.lista.add(ob);
         }
 
-        if(!(ArmazenaEscolha.escolha.equals("malha")) && campo_n_pavimentos!=1)
-            campo_n_pavimentos--;
-
         if(ArmazenaEscolha.escolha.contains("malha")) {
             if(voz != 0) {
                 ob = new ObjetoColuna("Patch Cable (Cor: Amarelo) (Tamanho: 2M) (" + categoria_cabo + ")", "Unid.", voz*2, voz * 2*campo_n_pavimentos);
@@ -486,5 +502,41 @@ public class Calculos {
         ArmazenaListaObjetosColuna.lista.add(ob);
 
 
+    }
+
+    public static void calcula_backbone_externo() {
+        int tam_cabo = (int) Math.ceil((distancia_externo + 30) * 1.1);
+        final int[] tamanhos_dio = {12, 16, 24, 48};
+        int dio_escolhido = 48;
+
+        for (int i = 0; i < 4; i++) {
+            if (tamanhos_dio[i] >= qtd_pares_externo) {
+                dio_escolhido = tamanhos_dio[i];
+                break;
+            }
+        }
+
+        ObjetoColuna ob = new ObjetoColuna(" ", " ", " ", " ");
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        ob = new ObjetoColuna("Cabeamento de backbone externo", " ", " ", " ");
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        ob = new ObjetoColuna("Cabo óptico "+qtd_pares_externo*2+" fibras 9x125 loose tube", "m", tam_cabo, tam_cabo);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        ob = new ObjetoColuna("Distribuidor Óptico (DIO) 1U "+dio_escolhido+" portas", "Unid.", 1, 2);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        ob = new ObjetoColuna("Caixa de emenda", "Unid.", 2, 4);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        ob = new ObjetoColuna("Pigtail 9x125 (Duplo) (Conector LC)", "Unid.", qtd_pares_externo, 2*qtd_pares_externo);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        ob = new ObjetoColuna("Acoplador óptico (Duplo) (Conector LC)", "Unid.", qtd_pares_externo, 2*qtd_pares_externo);
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
+        ob = new ObjetoColuna("Cordão óptico 9x125 (Duplo) (Conector LC) (2M)", "Unid.", qtd_pares_externo, 2*qtd_pares_externo);
     }
 }

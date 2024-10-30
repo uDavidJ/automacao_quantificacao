@@ -44,11 +44,11 @@
                   <Font name="Georgia" size="23.0" />
                </font>
             </Text>
-            <TextField fx:id="campo_pts_pavimentos" layoutX="280.0" layoutY="51.0" prefHeight="25.0" prefWidth="33.0" />
-            <TextField fx:id="campo_dt_malha" layoutX="280.0" layoutY="84.0" prefHeight="25.0" prefWidth="33.0" />
+            <TextField fx:id="campo_pts_pavimentos" layoutX="280.0" layoutY="51.0" prefHeight="25.0" prefWidth="54.0" />
+            <TextField fx:id="campo_dt_malha" layoutX="280.0" layoutY="84.0" prefHeight="25.0" prefWidth="54.0" />
             <ComboBox fx:id="categoria" layoutX="98.0" layoutY="114.0" prefWidth="150.0" />
-            <TextField fx:id="campo_voz" layoutX="68.0" layoutY="191.0" prefHeight="25.0" prefWidth="33.0" />
-            <TextField fx:id="campo_seg" layoutX="211.0" layoutY="191.0" prefHeight="25.0" prefWidth="33.0" />
+            <TextField fx:id="campo_voz" layoutX="68.0" layoutY="191.0" prefHeight="25.0" prefWidth="43.0" />
+            <TextField fx:id="campo_seg" layoutX="211.0" layoutY="191.0" prefHeight="25.0" prefWidth="43.0" />
             <Text layoutX="7.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VoIP " textAlignment="CENTER" wrappingWidth="65.015625">
                <font>
                   <Font name="Georgia" size="18.0" />
@@ -64,7 +64,7 @@
                   <Font name="Georgia" size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="campo_dados" layoutX="332.0" layoutY="191.0" prefHeight="25.0" prefWidth="33.0" />
+            <TextField fx:id="campo_dados" layoutX="332.0" layoutY="191.0" prefHeight="25.0" prefWidth="43.0" />
          </children>
       </Pane>
       <Pane layoutX="406.0" layoutY="70.0" prefHeight="275.0" prefWidth="380.0" style="-fx-background-color: radial-gradient(center 50% 50% , radius 500px , #ffebcd, #008080); -fx-background-radius: 20;">
@@ -89,15 +89,15 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="campo_pares_fibra_EF" layoutX="174.0" layoutY="48.0" prefHeight="25.0" prefWidth="33.0" />
-            <TextField fx:id="campo_pe_direito" layoutX="174.0" layoutY="86.0" prefHeight="25.0" prefWidth="33.0" />
+            <TextField fx:id="campo_pares_fibra_EF" layoutX="174.0" layoutY="48.0" prefHeight="25.0" prefWidth="76.0" />
+            <TextField fx:id="campo_pe_direito" layoutX="174.0" layoutY="86.0" prefHeight="25.0" prefWidth="76.0" />
             <ComboBox fx:id="box_categoria_fibra" layoutX="168.0" layoutY="125.0" prefWidth="150.0" />
             <RadioButton fx:id="radio_button_backbone_secundario" layoutX="12.0" layoutY="166.0" mnemonicParsing="false" onAction="#radio_button_backbone_secundario_acao" text="Backbone externo">
                <font>
                   <Font size="16.0" />
                </font>
             </RadioButton>
-            <TextField fx:id="campo_pares_fibra_BBS" layoutX="129.0" layoutY="192.0" opacity="0.0" prefHeight="25.0" prefWidth="33.0" />
+            <TextField fx:id="campo_pares_fibra_BBS" layoutX="129.0" layoutY="192.0" opacity="0.0" prefHeight="25.0" prefWidth="76.0" />
             <Text fx:id="texto_fibra_backbone_secundario" layoutX="14.0" layoutY="212.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° de pares">
                <font>
                   <Font size="18.0" />
@@ -108,14 +108,14 @@
                   <Font name="Georgia" size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="campo_n_predios" layoutX="129.0" layoutY="227.0" opacity="0.0" prefHeight="25.0" prefWidth="33.0" />
+            <TextField fx:id="campo_n_predios" layoutX="129.0" layoutY="227.0" opacity="0.0" prefHeight="25.0" prefWidth="76.0" />
          </children>
       </Pane>
       <Pane layoutY="345.0" prefHeight="155.0" prefWidth="800.0">
          <children>
             <Pane layoutX="408.0" layoutY="7.0" prefHeight="140.0" prefWidth="380.0" style="-fx-background-color: radial-gradient(center 50% 50% , radius 500px , #ffebcd, #008080); -fx-background-radius: 20;">
                <children>
-                  <TextField fx:id="campo_n_pavimentos" layoutX="250.0" layoutY="23.0" prefHeight="25.0" prefWidth="33.0" />
+                  <TextField fx:id="campo_n_pavimentos" layoutX="250.0" layoutY="23.0" prefHeight="25.0" prefWidth="43.0" />
                   <Text layoutX="98.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° de pavimentos">
                      <font>
                         <Font name="Georgia" size="18.0" />

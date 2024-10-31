@@ -165,7 +165,7 @@ public class Calculos {
             //Quantificacao cabo UTP rigido
             malha_horizontal *= pav;
             malha_horizontal = (int) Math.ceil( malha_horizontal/305.0);
-            ob = new ObjetoColuna("Cabo UTP rígido para malha horizontal (" + categoria_cabo + ")", "Cxs", malha_horizontal, malha_horizontal);
+            ob = new ObjetoColuna("Cabo UTP rígido para malha horizontal (" + categoria_cabo + ")", "Cxs", (int) Math.ceil(malha_horizontal/4.0), malha_horizontal);
             ArmazenaListaObjetosColuna.lista.add(ob);
 
             if (DVR)
@@ -179,7 +179,7 @@ public class Calculos {
             if(ArmazenaEscolha.escolha.contains("backbone"))
                 tamanho_rack_set+=tamanho_rack;
             else
-                tamanho_rack_set+=rack_informacoes[0];
+                tamanho_rack_set+=rack_informacoes[0]*rack_informacoes[1];
 
         }
     }
@@ -512,11 +512,12 @@ public class Calculos {
     public static void calcula_miscelanea() {
         ObjetoColuna ob;
 
+        ob = new ObjetoColuna(" ", "", "", "");
+        ArmazenaListaObjetosColuna.lista.add(ob);
+        ob = new ObjetoColuna("MISCELÂNEA", "", "", "");
+        ArmazenaListaObjetosColuna.lista.add(ob);
+
         if(ArmazenaEscolha.escolha.contains("malha")) {
-            ob = new ObjetoColuna(" ", "", "", "");
-            ArmazenaListaObjetosColuna.lista.add(ob);
-            ob = new ObjetoColuna("MISCELÂNEA", "", "", "");
-            ArmazenaListaObjetosColuna.lista.add(ob);
 
             ob = new ObjetoColuna("Etiqueta de identificação de tomadas e espelhos", "Unid.", (tomadas/2)*3*campo_n_pavimentos, (tomadas/2)*3*campo_n_pavimentos);
             ArmazenaListaObjetosColuna.lista.add(ob);

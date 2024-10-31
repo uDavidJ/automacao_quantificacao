@@ -163,8 +163,9 @@ public class Calculos {
             ArmazenaListaObjetosColuna.lista.add(ob);
 
             //Quantificacao cabo UTP rigido
-            malha_horizontal = (int) Math.ceil((double) malha_horizontal/305);
-            ob = new ObjetoColuna("Cabo UTP rígido para malha horizontal (" + categoria_cabo + ")", "Cxs", malha_horizontal, malha_horizontal*pav);
+            malha_horizontal *= pav;
+            malha_horizontal = (int) Math.ceil( malha_horizontal/305.0);
+            ob = new ObjetoColuna("Cabo UTP rígido para malha horizontal (" + categoria_cabo + ")", "Cxs", malha_horizontal, malha_horizontal);
             ArmazenaListaObjetosColuna.lista.add(ob);
 
             if (DVR)

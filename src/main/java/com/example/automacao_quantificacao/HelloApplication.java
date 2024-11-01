@@ -18,7 +18,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         cena_stage=stage;
-
+        //a
         stage.setTitle("Tela Inicial");
 
         FXMLLoader tela_inicial_loader = new FXMLLoader(HelloApplication.class.getResource("tela_inicial.fxml"));

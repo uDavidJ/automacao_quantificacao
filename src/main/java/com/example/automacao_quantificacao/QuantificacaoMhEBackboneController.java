@@ -134,30 +134,28 @@ public class QuantificacaoMhEBackboneController implements Initializable {
         }
 
         if (ArmazenaEscolha.escolha.contains("backbone")) {
-            Calculos.setPeDireito(Integer.parseInt(campo_pe_direito.getText()));
-            Calculos.setFibra(box_categoria_fibra.getValue());
-            Calculos.setFibrasAndar(Integer.parseInt(campo_pares_fibra_EF.getText()));
+            if (campo_n_pavimentos.getText().isEmpty() || campo_pe_direito.getText().isEmpty()) {
+                Calculos.setParesExterno(Integer.parseInt(campo_pares_fibra_BBS.getText()));
+                Calculos.setDistanciaExterna(Integer.parseInt(campo_n_predios.getText()));
+                ArmazenaEscolha.escolha = "externo";
+                Calculos.calcula_backbone_externo();
+            } else {
+                Calculos.setPeDireito(Integer.parseInt(campo_pe_direito.getText()));
+                Calculos.setFibra(box_categoria_fibra.getValue());
+                Calculos.setFibrasAndar(Integer.parseInt(campo_pares_fibra_EF.getText()));
 
-            Calculos.calculafibra();
+                Calculos.calculafibra();
+            }
         }
 
-        Calculos.calcula_rack_set(Calculos.tamanho_rack_set);
+        if (!ArmazenaEscolha.escolha.equals("externo"))
+            Calculos.calcula_rack_set(Calculos.tamanho_rack_set);
 
         if(ArmazenaEscolha.escolha.contains("backbone"))
             Calculos.calcula_rack_seq();
 
-        if(ArmazenaEscolha.getBe()) {
-            if ((campo_pares_fibra_BBS != null) && !campo_pares_fibra_BBS.getText().isEmpty())
-                Calculos.setParesExterno(Integer.parseInt(campo_pares_fibra_BBS.getText()));
-
-            if ((campo_n_predios != null) && !campo_n_predios.getText().isEmpty())
-                Calculos.setDistanciaExterna(Integer.parseInt(campo_n_predios.getText()));
-
-            Calculos.calcula_backbone_externo();
-        }
-
-
-        Calculos.calcula_miscelanea();
+        if (!ArmazenaEscolha.escolha.equals("externo"))
+            Calculos.calcula_miscelanea();
 
         HelloApplication.renderizaTelas("tabela");
     }
@@ -186,8 +184,8 @@ public class QuantificacaoMhEBackboneController implements Initializable {
         categoria.setItems(obscategorias);
 
         lista = new ArrayList<>();
-        lista.add("1GB");
-        lista.add("10GB");
+        lista.add("50x125");
+        lista.add("9x125");
 
         obscategorias = FXCollections.observableArrayList(lista);
         box_categoria_fibra.setItems(obscategorias);

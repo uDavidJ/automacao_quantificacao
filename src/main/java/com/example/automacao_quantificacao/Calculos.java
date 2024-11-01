@@ -90,12 +90,7 @@ public class Calculos {
     }
 
     public static void setFibra(String valor) {
-        if (valor.equals("1GB"))
-            cat_fibra = "50x125";
-        else if (valor.equals("10GB") && (campo_n_pavimentos*pe_direito < 300))
-            cat_fibra = "50x125";
-        else
-            cat_fibra = "9x125";
+        cat_fibra = valor;
     }
 
     public static void setPeDireito(int valor) {
@@ -173,6 +168,10 @@ public class Calculos {
 
 
             tamanho_rack += tamanho_rack + ((double) ((PP*2) + OF + tamanho_bandeja));
+
+            if (!area_reservada)
+                tamanho_rack += 2;
+
             tamanho_rack = tamanho_rack*1.5;
             rack_informacoes = calculaTamanhoRack(tamanho_rack);
 
@@ -299,9 +298,6 @@ public class Calculos {
                 ob = new ObjetoColuna("Distribuidor Óptico (DIO) 1U "+tamanho_tos+" portas", "Unid.", 1, campo_n_pavimentos-1);
                 ArmazenaListaObjetosColuna.lista.add(ob);
 
-                ob = new ObjetoColuna("Switches (Altura: 1U)", "Unid.", PP+1, (PP+1)*campo_n_pavimentos);
-                ArmazenaListaObjetosColuna.lista.add(ob);
-
                 OF+=2;// um DIO e um SWITCH
 
                 ob = new ObjetoColuna("Caixa de emenda", "Unid.", 2, (campo_n_pavimentos-1)*2);
@@ -375,11 +371,11 @@ public class Calculos {
             ArmazenaListaObjetosColuna.lista.add(ob);
         } else {
             modelo_rack="Fechado";
-            ob = new ObjetoColuna("Exaustor para rack fechado", "Unid.", rack_informacoes[1], rack_informacoes[1]*campo_n_pavimentos);
+            ob = new ObjetoColuna("Exaustor para rack fechado", "Unid.", 1, campo_n_pavimentos);
             ArmazenaListaObjetosColuna.lista.add(ob);
         }
 
-        ob = new ObjetoColuna("Bandeja fixa (Altura: 4U)", "Unid.", rack_informacoes[1], rack_informacoes[1]*campo_n_pavimentos);
+        ob = new ObjetoColuna("Bandeja fixa (Altura: 4U)", "Unid.", 1, campo_n_pavimentos);
         ArmazenaListaObjetosColuna.lista.add(ob);
 
         if (bandeja_deslizante) {
@@ -471,7 +467,7 @@ public class Calculos {
     }
 
     public static void calcula_backbone_externo() {
-        int tam_cabo = (int) Math.ceil((distancia_externo + 30) * 1.1);
+        int tam_cabo = (int) Math.ceil((distancia_externo + 60) * 1.1);
         final int[] tamanhos_dio = {12, 16, 24, 48};
         int dio_escolhido = 48;
 
@@ -577,4 +573,5 @@ public class Calculos {
         }
 
     }
+
 }
